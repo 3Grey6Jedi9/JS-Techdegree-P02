@@ -63,6 +63,31 @@ Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 
+function addPagination(list) {
+
+    const pages = Math.ceil(list.length / 9); // I want to display 9 students per page.
+
+    let link = document.querySelector('ul.link-list');
+
+    link.innerHTML = '';
+
+    let i = 0;
+    while (i<pages) {
+        let html = `
+        <li>
+            <button type="button">${i+1}</button>
+        </li>`;
+        link.insertAdjacentHTML('beforeend', html);
+        i++;
+    }
+
+
+
+
+
+
+}
+
 
 
 // Call functions
