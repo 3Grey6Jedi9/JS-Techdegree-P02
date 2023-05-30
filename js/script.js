@@ -21,6 +21,7 @@ function showPage(list, page) {
     let items = Math.floor(list.length / page)
 
     let start_index = (page*items) - items
+    let end_index = ''
 
     if (list.length % page === 0) {
 
@@ -35,6 +36,24 @@ function showPage(list, page) {
 
     const students = document.querySelector('ul.student-list');
     students.innerHTML = '';
+
+    let i = 0;
+    while (i<list.length) {
+
+        let html = `
+        <li class="student-item cf">
+    <div class="student-details">
+      <img class="avatar" src="https://randomuser.me/api/portraits/women/25.jpg" alt="Profile Picture">
+      <h3>${list[i].name.first} ${list[i].name.last}</h3>
+      <span class="email">${list[i].email}</span>
+    </div>
+    <div class="joined-details">
+      <span class="date">${list[i].registered.date}</span>
+    </div>
+  </li>`;
+        students.insertAdjacentHTML('beforeend', html);
+        i++
+    }
 
 }
 
