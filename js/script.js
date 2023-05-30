@@ -81,8 +81,12 @@ function addPagination(list) {
         i++;
     }
 
+    let buttons = link.querySelectorAll('button');
+    buttons[0].className = "active";
+    link.addEventListener('click', function() {
 
 
+    });
 
 
 
