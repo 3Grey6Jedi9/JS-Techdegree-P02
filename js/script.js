@@ -83,8 +83,22 @@ function addPagination(list) {
 
     let buttons = link.querySelectorAll('button');
     buttons[0].className = "active";
-    link.addEventListener('click', function() {
+    link.addEventListener('click', function(e) {
+        if (e.target.tagName === 'BUTTON') {
+            buttons.forEach(button => {
+                if (button !== e.target) {
+                    button.classList.remove('active');
 
+                }
+
+            });
+
+            e.target.classList.add('active');
+
+        }
+
+        const page = parseInt(e.target.textContent); // Gets the page number
+        showPage(list,page)
 
     });
 
