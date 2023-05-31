@@ -116,5 +116,42 @@ function showFullPage(list, page) {
 
 // Call functions
 
-showFullPage(data, 3);
+showFullPage(data, 1);
+
+
+// Creating the searching container
+
+const searchContainer = document.querySelector('header h2');
+    searchContainer.innerHTML = `
+    <label for="search" class="student-search">
+  <span>Search by name</span>
+  <input id="search" placeholder="Search by name...">
+  <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+</label>`;
+
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('keyup', performSearch);
+
+function performSearch() {
+
+    const searchTerm = searchInput.value.toLowerCase();
+    const studentsItems = document.querySelectorAll('.student-item');
+    studentsItems.forEach(studentItem => {
+        const fullName = studentItem.querySelector('h3').textContent.toLowerCase();
+
+        if (fullName.includes(searchTerm)) {
+
+            studentItem.style.display = 'block';
+
+        } else {
+
+            studentItem.style.display = 'none';
+
+
+        }
+
+    })
+
+}
+
 
