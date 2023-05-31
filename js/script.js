@@ -129,31 +129,58 @@ const searchContainer = document.querySelector('header h2');
   <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
 </label>`;
 
+
+
+
 const searchInput = document.getElementById('search');
-const searchButton = document.querySelector('.student-search button')
+const searchButton = document.querySelector('.student-search button');
+
 searchInput.addEventListener('keyup', performSearch);
 searchButton.addEventListener('click', performSearch);
 
+function notFoundMessage() {
+  const message = document.querySelector('header');
+  const html = `
+    <h1>NO RESULTS FOUND</h1>
+  `;
+  const existingMessage = message.querySelector('h1');
+
+  if (!existingMessage || existingMessage.textContent.trim() === '') {
+    message.insertAdjacentHTML('beforeend', html);
+  }
+}
+
+function deleteMessage() {
+  const message = document.querySelector('header h1');
+  if (message) {
+    message.remove();
+  }
+}
+
+
 function performSearch() {
+  const searchTerm = searchInput.value.toLowerCase();
+  const studentsItems = document.querySelectorAll('.student-item');
+  let itemsFound = 0;
 
-    const searchTerm = searchInput.value.toLowerCase();
-    const studentsItems = document.querySelectorAll('.student-item');
-    studentsItems.forEach(studentItem => {
-        const fullName = studentItem.querySelector('h3').textContent.toLowerCase();
+  studentsItems.forEach(studentItem => {
+    const fullName = studentItem.querySelector('h3').textContent.toLowerCase();
 
-        if (fullName.includes(searchTerm)) {
+    if (fullName.includes(searchTerm)) {
+      studentItem.style.display = 'block';
+      itemsFound++
+      deleteMessage()
+    } else {
+      studentItem.style.display = 'none';
 
-            studentItem.style.display = 'block';
+    }
+  });
 
-        } else {
-
-            studentItem.style.display = 'none';
-
-
-        }
-
-    })
+  if (itemsFound === 0 && searchInput.value.trim() !== '') {
+    notFoundMessage();
+  }
 
 }
+
 
 
