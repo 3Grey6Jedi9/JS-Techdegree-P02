@@ -130,7 +130,9 @@ const searchContainer = document.querySelector('header h2');
 </label>`;
 
 const searchInput = document.getElementById('search');
+const searchButton = document.querySelector('.student-search button')
 searchInput.addEventListener('keyup', performSearch);
+searchButton.addEventListener('click', performSearch);
 
 function performSearch() {
 
