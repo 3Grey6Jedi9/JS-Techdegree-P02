@@ -64,7 +64,9 @@ Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 
-function addPagination(list, page) {
+function showFullPage(list, page) {
+
+    showPage(list,page)
 
     const pages = Math.ceil(list.length / 9); // I want to display 9 students per page.
 
@@ -114,6 +116,5 @@ function addPagination(list, page) {
 
 // Call functions
 
-showPage(data,3);
-addPagination(data, 3);
+showFullPage(data, 3);
 
