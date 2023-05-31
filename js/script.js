@@ -39,12 +39,9 @@ function showPage(list, page) {
 }
 
 
-/*
-Create the `addPagination` function
-This function will create and insert/append the elements needed for the pagination buttons
-*/
+// Defining the function that creates the whole content of the web page.
 
-function showFullPage(list, page) {
+function showFullPage(list, page=1) {
 
     showPage(list,page)
 
@@ -63,7 +60,6 @@ function showFullPage(list, page) {
         link.insertAdjacentHTML('beforeend', html);
         i++;
     }
-
 
     let buttons = link.querySelectorAll('button');
     buttons[page-1].className = "active";
@@ -88,6 +84,9 @@ function showFullPage(list, page) {
 
 
 }
+
+
+
 
 
 // Calling functions
@@ -133,11 +132,14 @@ function deleteMessage() {
   }
 }
 
+let new_data = [];
+
 
 function performSearch() {
   const searchTerm = searchInput.value.toLowerCase();
   const studentsItems = document.querySelectorAll('.student-item');
   let itemsFound = 0;
+
 
   studentsItems.forEach(studentItem => {
     const fullName = studentItem.querySelector('h3').textContent.toLowerCase();
@@ -152,11 +154,33 @@ function performSearch() {
     }
   });
 
+
   if (itemsFound === 0 && searchInput.value.trim() !== '') {
     notFoundMessage();
   }
 
 }
+
+
+// Maybe I do not need this fucntion
+
+function depure(list, searchTerm) {
+
+    list.forEach((student) => {
+
+        if(student.name.first.includes(searchTerm) || student.name.last.includes(searchTerm)) {
+
+            new_data.push(student);
+
+        }
+
+        return new_data;
+    });
+
+}
+
+
+
 
 
 
