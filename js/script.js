@@ -18,27 +18,28 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 function showPage(list, page) {
-    let items = Math.floor(list.length / page)
-
-    let start_index = (page*items) - items
+    let items = list.length;
+    let num_pages = Math.ceil(items/9);
+    let start_index = (page-1)*9 + 1;
     let end_index = ''
 
-    if (list.length % page === 0) {
 
-        let end_index = page * items
+    if (page < num_pages) {
+
+         end_index = 9*page
 
 
     } else {
 
+        end_index = items
 
-        let end_index = (page*items) + (list.length % page)
     }
 
     const students = document.querySelector('ul.student-list');
     students.innerHTML = '';
 
-    let i = 0;
-    while (i<list.length) {
+    let i = start_index;
+    while (i<=end_index) {
 
         let html = `
         <li class="student-item cf">
@@ -110,6 +111,6 @@ function addPagination(list) {
 
 // Call functions
 
-showPage(data,1);
+showPage(data,3);
 addPagination(data);
 
