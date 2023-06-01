@@ -1,4 +1,7 @@
 
+
+// This function shows the page
+
 function showPage(list, page) {
     let items = list.length;
     let num_pages = Math.ceil(items/9);
@@ -39,52 +42,66 @@ function showPage(list, page) {
 }
 
 
-// Defining the function that creates the whole content of the web page.
+// Defining the function that creates the whole content of the web page. Page is the page that I will start showing.
+// The data is the parameter that will allow me
 
 function showFullPage(list, page=1) {
 
-    showPage(list,page)
+    showPage(list,page);
 
     const pages = Math.ceil(list.length / 9); // I want to display 9 students per page.
 
     let link = document.querySelector('ul.link-list');
 
-    link.innerHTML = '';
+    if (link.children.length !== pages) { // New code
 
-    let i = 0;
-    while (i<pages) {
-        let html = `
+        link.innerHTML = '';
+
+        let i = 0;
+        while (i < pages) {
+            let html = `
         <li>
-            <button type="button">${i+1}</button>
+            <button type="button">${i + 1}</button>
         </li>`;
-        link.insertAdjacentHTML('beforeend', html);
-        i++;
-    }
-
-    let buttons = link.querySelectorAll('button');
-    buttons[page-1].className = "active";
-    link.addEventListener('click', function(e) {
-        if (e.target.tagName === 'BUTTON') {
-            buttons.forEach(button => {
-                if (button !== e.target) {
-                    button.classList.remove('active');
-
-                }
-
-            });
-
-            e.target.classList.add('active');
-
+            link.insertAdjacentHTML('beforeend', html);
+            i++;
         }
 
-        const page = parseInt(e.target.textContent); // Gets the page number
-        showPage(list,page)
+        let buttons = link.querySelectorAll('button');
+        buttons[page - 1].className = "active";
+        link.addEventListener('click', function (e) {
+            if (e.target.tagName === 'BUTTON') {
+                buttons.forEach(button => {
+                    if (button !== e.target) {
+                        button.classList.remove('active');
 
+                    }
+
+                });
+
+                e.target.classList.add('active');
+
+            }
+
+            const page = parseInt(e.target.textContent); // Gets the page number
+            showPage(list, page)
+
+        });
+
+    } // Closing the new if statement
+     else {
+    // If the number of buttons is already correct, update the active button
+    let buttons = link.querySelectorAll('button');
+    buttons.forEach((button, index) => {
+      if (index === page - 1) {
+        button.classList.add('active');
+      } else {
+        button.classList.remove('active');
+      }
     });
-
+  }
 
 }
-
 
 
 
@@ -135,11 +152,12 @@ function deleteMessage() {
 let new_data = [];
 
 
+// This the function that manages the search
+
 function performSearch() {
   const searchTerm = searchInput.value.toLowerCase();
   const studentsItems = document.querySelectorAll('.student-item');
   let itemsFound = 0;
-
 
   studentsItems.forEach(studentItem => {
     const fullName = studentItem.querySelector('h3').textContent.toLowerCase();
@@ -153,6 +171,7 @@ function performSearch() {
 
     }
   });
+ // Probably I should update the number of buttons here.I have the number of items just update the pages.
 
 
   if (itemsFound === 0 && searchInput.value.trim() !== '') {
@@ -162,24 +181,13 @@ function performSearch() {
 }
 
 
-// Maybe I do not need this fucntion
+// Update pagination buttons function
 
-function depure(list, searchTerm) {
+function updatePages() {
 
-    list.forEach((student) => {
 
-        if(student.name.first.includes(searchTerm) || student.name.last.includes(searchTerm)) {
-
-            new_data.push(student);
-
-        }
-
-        return new_data;
-    });
 
 }
-
-
 
 
 
