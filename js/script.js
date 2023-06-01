@@ -174,31 +174,18 @@ function performSearch() {
 
   updatePages(itemsFound)
 
-  if (searchInput === '') {
-      let link = document.querySelector('ul.link-list');
+    if(searchInput.value ==='') {
 
-        link.innerHTML = '';
+        showFullPage(data,1)
 
-        let i = 0;
-        while (i < initial_pages) {
-            let html = `
-        <li>
-            <button type="button">${i + 1}</button>
-        </li>`;
-            link.insertAdjacentHTML('beforeend', html);
-            i++;
-
-
-        }
-
-
-  }
-
+    }
   if (itemsFound === 0 && searchInput.value.trim() !== '') {
     notFoundMessage();
   }
 
 }
+
+
 
 
 // Update pagination buttons function. It takes all the items found and get the pages and create the buttons.
@@ -234,6 +221,8 @@ function updatePages() {
 
     }
 
+
 }
+
 
 
