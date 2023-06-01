@@ -157,7 +157,7 @@ function deleteMessage() {
 }
 
 
-let new_data = [];
+
 
 // This the function that manages the search
 
@@ -173,7 +173,6 @@ function performSearch() {
       studentItem.style.display = 'block';
       itemsFound++
       deleteMessage()
-      new_data.push(studentItem)
     } else {
       studentItem.style.display = 'none';
 
