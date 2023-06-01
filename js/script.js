@@ -81,10 +81,16 @@ function showFullPage(list, page=1) {
 
                 e.target.classList.add('active');
 
+
             }
 
+            if (searchInput.value !== '') {
+                performSearch();
+
+                         } else {
+
             const page = parseInt(e.target.textContent); // Gets the page number
-            showPage(list, page)
+            showPage(list, page) }
 
         });
 
@@ -130,6 +136,7 @@ const searchButton = document.querySelector('.student-search button');
 searchInput.addEventListener('keyup', performSearch);
 searchButton.addEventListener('click', performSearch);
 
+
 function notFoundMessage() {
   const message = document.querySelector('header');
   const html = `
@@ -149,8 +156,8 @@ function deleteMessage() {
   }
 }
 
-let new_data = [];
 
+let new_data = [];
 
 // This the function that manages the search
 
@@ -166,6 +173,7 @@ function performSearch() {
       studentItem.style.display = 'block';
       itemsFound++
       deleteMessage()
+      new_data.push(studentItem)
     } else {
       studentItem.style.display = 'none';
 
@@ -221,8 +229,6 @@ function updatePages() {
 
     }
 
-
 }
-
 
 
