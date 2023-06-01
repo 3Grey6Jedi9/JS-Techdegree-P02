@@ -173,7 +173,7 @@ function performSearch() {
   });
  // Probably I should update the number of buttons here.I have the number of items just update the pages.
 
-
+  updatePages(itemsFound)
   if (itemsFound === 0 && searchInput.value.trim() !== '') {
     notFoundMessage();
   }
@@ -181,9 +181,9 @@ function performSearch() {
 }
 
 
-// Update pagination buttons function
+// Update pagination buttons function. It takes all the items found and get the pages and create the buttons.
 
-function updatePages() {
+function updatePages(itemsFound) {
 
 
 
