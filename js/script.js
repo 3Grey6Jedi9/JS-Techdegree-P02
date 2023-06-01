@@ -171,9 +171,29 @@ function performSearch() {
 
     }
   });
- // Probably I should update the number of buttons here.I have the number of items just update the pages.
 
   updatePages(itemsFound)
+
+  if (searchInput === '') {
+      let link = document.querySelector('ul.link-list');
+
+        link.innerHTML = '';
+
+        let i = 0;
+        while (i < initial_pages) {
+            let html = `
+        <li>
+            <button type="button">${i + 1}</button>
+        </li>`;
+            link.insertAdjacentHTML('beforeend', html);
+            i++;
+
+
+        }
+
+
+  }
+
   if (itemsFound === 0 && searchInput.value.trim() !== '') {
     notFoundMessage();
   }
@@ -183,12 +203,37 @@ function performSearch() {
 
 // Update pagination buttons function. It takes all the items found and get the pages and create the buttons.
 
-function updatePages(itemsFound) {
+const initial_pages = Math.ceil(data.length / 9);
+
+function updatePages() {
+
+    const items = document.querySelectorAll('ul.link-list li');
+    let current_pages = Math.ceil(items.length / 9);
+    if (items.length === 0) {
+
+        current_pages = 1;
+
+    }
+    if (searchInput !== '') {
+
+        let link = document.querySelector('ul.link-list');
+
+        link.innerHTML = '';
+
+        let i = 0;
+        while (i < current_pages) {
+            let html = `
+        <li>
+            <button type="button">${i + 1}</button>
+        </li>`;
+            link.insertAdjacentHTML('beforeend', html);
+            i++;
 
 
+        }
+
+    }
 
 }
-
-
 
 
