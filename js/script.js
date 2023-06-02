@@ -41,6 +41,17 @@ function showPage(list, page) {
 
 }
 
+// End of the function that shows the page
+
+
+
+
+
+
+
+
+
+
 
 // Defining the function that creates the whole content of the web page. Page is the page that I will start showing.
 // The data is the parameter that will allow me
@@ -104,12 +115,22 @@ function showFullPage(list, page=1) {
 
 }
 
+// End of the function that will create the main content
+
 
 
 
 // Calling functions
 
 showFullPage(data, 1);
+
+// End of calling the main function
+
+
+
+
+
+
 
 
 // Creating the searching container
@@ -128,12 +149,21 @@ header.appendChild(searchContainer);
 
 
 
+
+
+
+
 const searchInput = document.getElementById('search');
 const searchButton = document.querySelector('.student-search button');
 
 searchInput.addEventListener('keyup', performSearch);
 searchButton.addEventListener('click', performSearch);
 
+// End of the creation of the searching bar  and the definition of their actions
+
+
+
+// This function will display a message if nothing is found
 
 function notFoundMessage() {
   const message = document.querySelector('body');
@@ -147,12 +177,26 @@ function notFoundMessage() {
   }
 }
 
+
+// End of the function that will display the message if nothing is found.
+
+
+
+
+
+
+
+// This is the fucntion that deletes the NO FOUND message when is not necessary
+
 function deleteMessage() {
   const message = document.querySelector('body h1');
   if (message) {
     message.remove();
   }
 }
+
+// End of the function
+
 
 
 
@@ -194,6 +238,10 @@ function performSearch() {
 
 }
 
+// End of the fucntion that performs the search
+
+
+
 
 
 
@@ -232,4 +280,4 @@ function updatePages() {
 
 }
 
-
+// End of the function that allows me to update the number of pagination buttons.
