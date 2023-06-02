@@ -136,9 +136,9 @@ searchButton.addEventListener('click', performSearch);
 
 
 function notFoundMessage() {
-  const message = document.querySelector('header');
+  const message = document.querySelector('body');
   const html = `
-    <h1>NO RESULTS FOUND</h1>
+    <h1 class="no-results">NO RESULTS FOUND</h1>
   `;
   const existingMessage = message.querySelector('h1');
 
@@ -148,7 +148,7 @@ function notFoundMessage() {
 }
 
 function deleteMessage() {
-  const message = document.querySelector('header h1');
+  const message = document.querySelector('body h1');
   if (message) {
     message.remove();
   }
