@@ -14,7 +14,7 @@ function showPage(list, page) {
 
     } else {
 
-        end_index = items
+        end_index = items - 1
 
     }
 
