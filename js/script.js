@@ -89,7 +89,7 @@ function showFullPage(list, page=1) {
 });
 
 
-    } // Closing the new if statement
+    }
      else {
     // If the number of buttons is already correct, update the active button
     let buttons = link.querySelectorAll('button');
@@ -114,13 +114,16 @@ showFullPage(data, 1);
 
 // Creating the searching container
 
-const searchContainer = document.querySelector('header h2');
-    searchContainer.innerHTML = `
-    <label for="search" class="student-search">
-  <span>Search by name</span>
-  <input id="search" placeholder="Search by name...">
-  <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
-</label>`;
+const header = document.querySelector('.header');
+const searchContainer = document.createElement('div');
+searchContainer.innerHTML = `
+  <label for="search" class="student-search">
+    <span>Search by name</span>
+    <input id="search" placeholder="Search by name...">
+    <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+  </label>`;
+header.appendChild(searchContainer);
+
 
 
 
