@@ -5,7 +5,7 @@
 function showPage(list, page) {
     let items = list.length;
     let num_pages = Math.ceil(items/9);
-    let start_index = (page-1)*9 + 1;
+    let start_index = (page-1)*9;
     let end_index = ''
 
     if (page < num_pages) {
