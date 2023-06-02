@@ -188,6 +188,10 @@ function performSearch() {
     }
   if (itemsFound === 0 && searchInput.value.trim() !== '') {
     notFoundMessage();
+    let link = document.querySelector('ul.link-list');
+
+        link.innerHTML = '';
+
   }
 
 }
