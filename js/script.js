@@ -10,7 +10,7 @@ function showPage(list, page) {
 
     if (page < num_pages) {
 
-         end_index = 9*page
+         end_index = 9*page - 1
 
     } else {
 
@@ -70,29 +70,24 @@ function showFullPage(list, page=1) {
         let buttons = link.querySelectorAll('button');
         buttons[page - 1].className = "active";
         link.addEventListener('click', function (e) {
-            if (e.target.tagName === 'BUTTON') {
-                buttons.forEach(button => {
-                    if (button !== e.target) {
-                        button.classList.remove('active');
+  if (e.target.tagName === 'BUTTON') {
+    buttons.forEach(button => {
+      if (button !== e.target) {
+        button.classList.remove('active');
+      }
+    });
 
-                    }
+    e.target.classList.add('active');
 
-                });
+    if (searchInput.value !== '') {
+      performSearch();
+    } else {
+      const page = parseInt(e.target.textContent);
+      showPage(list, page);
+    }
+  }
+});
 
-                e.target.classList.add('active');
-
-
-            }
-
-            if (searchInput.value !== '') {
-                performSearch();
-
-                         } else {
-
-            const page = parseInt(e.target.textContent); // Gets the page number
-            showPage(list, page) }
-
-        });
 
     } // Closing the new if statement
      else {
